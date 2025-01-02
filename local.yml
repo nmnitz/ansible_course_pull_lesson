@@ -2,17 +2,16 @@
 - hosts: localhost
   connection: local
   become: true
-  tasks: 
+  tasks:
 
   - name: update all packages
     ansible.builtin.apt:
       upgrade: dist
       update_cache: yes
-    when: anisible_distribution == "Ubuntu"
+    when: ansible_distribution == "Ubuntu"
 
   - name: install apache2
     ansible.builtin.apt:
       name: apache2
       state: latest
     when: ansible_distribution == "Ubuntu"
- 
